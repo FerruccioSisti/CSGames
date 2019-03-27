@@ -1,0 +1,66 @@
+[
+    {
+        "base": 0,
+        "manaCost": 1
+    },
+    {
+        "base": 50,
+        "manaCost": 3
+    },
+    {
+        "base": 60,
+        "manaCost": 3
+    },
+    {
+        "base": 35,
+        "manaCost": 2
+    },
+    {
+        "base": -10,
+        "manaCost": 1
+    },
+    {
+        "base": 50,
+        "manaCost": 5
+    },
+    {
+        "base": 50,
+        "manaCost": 4
+    },
+    {
+        "base": 40,
+        "manaCost": 1
+    },
+    {
+        "base": 40,
+        "manaCost": 2
+    },
+    {
+        "base": 40,
+        "manaCost": 4
+    },
+    {
+        "base": 100,
+        "manaCost": 10
+    },
+    {
+        "base": 45,
+        "manaCost": 2
+    },
+    {
+        "base": 40,
+        "manaCost": 3
+    },
+    {
+        "base": 50,
+        "manaCost": 3
+    },
+    {
+        "base": 30,
+        "manaCost": 6
+    },
+    {
+        "base": -30,
+        "manaCost": 2
+    }
+]
