@@ -1,0 +1,45 @@
+name: cs2019-functional-Q2
+author: Jean-Alexandre Barszcz
+license: MIT
+
+library:
+  source-dirs: lib
+  ghc-options: -Wall -Wno-type-defaults
+
+executables:
+  lambdastic:
+    main: Main.hs
+    source-dirs: src
+    ghc-options: -Wall
+    dependencies:
+      - repline
+      - haskeline
+      - terminal-size
+      - ansi-terminal
+      - cs2019-functional-Q2
+
+dependencies:
+  - base <= 4.12.0.0
+  - containers
+  - filepath
+  - transformers
+  - mtl
+  - parsec (>= 3.1 && < 3.2)
+  - prettyprinter
+  - safe
+
+tests:
+  test:
+    main: "Driver.hs"
+    source-dirs: "test"
+    dependencies:
+      - tasty
+      - tasty-hunit
+      - tasty-smallcheck
+      - tasty-quickcheck
+      - QuickCheck
+      - smallcheck
+      - cs2019-functional-Q2
+    verbatim: |
+      build-tool-depends:
+        tasty-discover:tasty-discover

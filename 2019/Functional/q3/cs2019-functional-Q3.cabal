@@ -1,0 +1,45 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 6c8e71a9eb887f1cb2c18f86adabb71b78dc745665602d8d7758d0ba91e6b0e0
+
+name:           cs2019-functional-Q3
+version:        0.0.0
+author:         Jean-Alexandre Barszcz
+license:        MIT
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  exposed-modules:
+      Queue
+  other-modules:
+      Paths_cs2019_functional_Q3
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wno-type-defaults
+  build-depends:
+      base <=4.12.0.0
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      TestQueue
+      Paths_cs2019_functional_Q3
+  hs-source-dirs:
+      test
+  build-depends:
+      QuickCheck
+    , base <=4.12.0.0
+    , cs2019-functional-Q3
+    , smallcheck
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-smallcheck
+  default-language: Haskell2010
+  build-tool-depends:
+    tasty-discover:tasty-discover

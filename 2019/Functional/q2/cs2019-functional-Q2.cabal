@@ -1,0 +1,89 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 4c155a4c75c7be8ebae616e4b948b97dee54154f1fc857f4ddeb2cb593337c1a
+
+name:           cs2019-functional-Q2
+version:        0.0.0
+author:         Jean-Alexandre Barszcz
+license:        MIT
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  exposed-modules:
+      Evaluation
+      Language
+      Modules
+      Parser
+      PrettyPrinter
+      Util
+  other-modules:
+      Paths_cs2019_functional_Q2
+  hs-source-dirs:
+      lib
+  ghc-options: -Wall -Wno-type-defaults
+  build-depends:
+      base <=4.12.0.0
+    , containers
+    , filepath
+    , mtl
+    , parsec (>=3.1 && <3.2)
+    , prettyprinter
+    , safe
+    , transformers
+  default-language: Haskell2010
+
+executable lambdastic
+  main-is: Main.hs
+  other-modules:
+      ColorIO
+      Paths_cs2019_functional_Q2
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      ansi-terminal
+    , base <=4.12.0.0
+    , containers
+    , cs2019-functional-Q2
+    , filepath
+    , haskeline
+    , mtl
+    , parsec (>=3.1 && <3.2)
+    , prettyprinter
+    , repline
+    , safe
+    , terminal-size
+    , transformers
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      TestEval
+      TestSyntax
+      Paths_cs2019_functional_Q2
+  hs-source-dirs:
+      test
+  build-depends:
+      QuickCheck
+    , base <=4.12.0.0
+    , containers
+    , cs2019-functional-Q2
+    , filepath
+    , mtl
+    , parsec (>=3.1 && <3.2)
+    , prettyprinter
+    , safe
+    , smallcheck
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-smallcheck
+    , transformers
+  default-language: Haskell2010
+  build-tool-depends:
+    tasty-discover:tasty-discover

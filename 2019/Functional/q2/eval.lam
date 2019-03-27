@@ -1,0 +1,24 @@
+module "eval".
+
+import "base".
+
+{-
+
+The term omega diverges both in call-by-value and call-by-name
+evaluation. Use this to find a term that diverges only in one of these
+orders of evaluation.
+
+To test your work, run the interpreter:
+
+$ cabal new-run lambdastic -- base.lam eval.lam
+
+... and evaluate your term with both strategies.
+
+-}
+
+-- Let's repeat the definition of the diverging term
+omega = let w = \x -> $ x x in $ w w.
+
+-- Find the term that diverges with one evaluation strategy that you
+-- have implemented but not the other
+diverges_in_one_order = undef.

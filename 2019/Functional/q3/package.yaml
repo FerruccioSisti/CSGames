@@ -1,0 +1,26 @@
+name: cs2019-functional-Q3
+author: Jean-Alexandre Barszcz
+license: MIT
+
+library:
+  source-dirs: src
+  ghc-options: -Wall -Wno-type-defaults
+
+dependencies:
+  - base <= 4.12.0.0
+
+tests:
+  test:
+    main: "Driver.hs"
+    source-dirs: "test"
+    dependencies:
+      - tasty
+      - tasty-hunit
+      - tasty-smallcheck
+      - tasty-quickcheck
+      - QuickCheck
+      - smallcheck
+      - cs2019-functional-Q3
+    verbatim: |
+      build-tool-depends:
+        tasty-discover:tasty-discover

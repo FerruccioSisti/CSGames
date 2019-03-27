@@ -1,0 +1,48 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9c9161e5ff23b4a3c9138c60543f1b85ce2ecfe4fc447e49637e7cf981a5a242
+
+name:           cs2019-functional-Q1
+version:        0.0.0
+author:         Jean-Alexandre Barszcz
+license:        MIT
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  exposed-modules:
+      HigherOrderFunctions
+      Recursion
+  other-modules:
+      Paths_cs2019_functional_Q1
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wno-type-defaults
+  build-depends:
+      base <=4.12.0.0
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      TestHigherOrderFunctions
+      TestRecursion
+      TestUtil
+      Paths_cs2019_functional_Q1
+  hs-source-dirs:
+      test
+  build-depends:
+      QuickCheck
+    , base <=4.12.0.0
+    , cs2019-functional-Q1
+    , smallcheck
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-smallcheck
+  default-language: Haskell2010
+  build-tool-depends:
+    tasty-discover:tasty-discover

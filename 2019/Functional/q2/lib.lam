@@ -1,0 +1,172 @@
+module "lib".
+
+import "base".
+
+{-
+
+Implement the following functions according to the specification in
+the comments.
+
+To test your work, run the interpreter:
+
+$ cabal new-run lambdastic -- base.lam eval.lam
+
+... and evaluate your terms with the :equal and :int commands.
+
+Try all the tests in this file by running:
+
+$ sed -n 's/^> \(.*\)/\1/p' ./lib.lam | cabal new-run lambdastic -- base.lam lib.lam
+
+-}
+
+{-
+`length` finds the length of a list. [1 point]
+
+> :int $ length nil --> Just 0
+> :int $ length ($ cons nil nil) --> Just 1
+> :int $ length ($ cons one ($ cons two ($ cons three nil))) --> Just 3
+-}
+length = undef. -- TODO implement this function.
+
+{-
+`reverse` reverses a list. [1 point]
+
+> :equal $ reverse nil, nil --> True
+> :equal $ reverse ($ cons one ($ cons two ($ cons three nil))), ($ cons three ($ cons two ($ cons one nil))) --> True
+-}
+reverse = undef. -- TODO implement this function.
+
+{-
+`minus` substracts the Nat b from the Nat a. If b is equal to, or
+greater than a, then the result is zero. [1 point]
+
+> :int $ minus zero zero --> Just 0
+> :int $ minus one zero --> Just 1
+> :int $ minus zero one --> Just 0
+> :int $ minus ten seven --> Just 3
+-}
+minus = undef. -- TODO implement this function.
+
+{-
+`is_zero` tests whether the natural argument is zero, and returns a
+boolean. [1 point]
+
+> :equal $ is_zero zero, true --> True
+> :equal $ is_zero one, false --> True
+> :equal $ is_zero ($ minus five seven), true --> True
+-}
+is_zero = undef. -- TODO implement this function.
+
+{-
+`less_or_eq` checks if the first natural argument is lesser than, or
+equal to the second natural argument. [1 point]
+
+> :equal $ less_or_eq zero zero, true --> True
+> :equal $ less_or_eq one zero, false --> True
+> :equal $ less_or_eq zero one, true --> True
+> :equal $ less_or_eq six four, false --> True
+> :equal $ less_or_eq ten ($ succ ten), true --> True
+-}
+less_or_eq = undef. -- TODO implement this function.
+
+{-
+`nat_eq` checks if both of its natural arguments are the same. [1 point]
+
+> :equal $ nat_eq zero zero, true --> True
+> :equal $ nat_eq one zero, false --> True
+> :equal $ nat_eq zero one, false --> True
+> :equal $ nat_eq six four, false --> True
+> :equal $ nat_eq ten ($ succ nine), true --> True
+-}
+nat_eq = undef. -- TODO implement this function.
+
+{-
+`multiply` does multiplication of two natural numbers. [1 point]
+
+> :equal $ multiply zero zero, zero --> True
+> :equal $ multiply one zero, zero --> True
+> :equal $ multiply zero one, zero --> True
+> :equal $ multiply seven one, seven --> True
+> :equal $ multiply two three, six --> True
+-}
+multiply = undef. -- TODO implement this function.
+
+{-
+`pair`, `first`, `second` implement the church encoding of pairs.
+See https://en.wikipedia.org/wiki/Church_encoding#Church_pairs.
+
+[1 point each]
+
+> :equal $ first ($ pair one two), one --> True
+> :equal $ second ($ pair one two), two --> True
+> :equal $ ($ pair five four) add, nine --> True
+-}
+pair = undef. -- TODO implement this function.
+first = undef. -- TODO implement this function.
+second = undef. -- TODO implement this function.
+
+{-
+`fib` takes an argument `n` and returns the `n`th fibonacci number.
+[1 point]
+
+> :int $ fib zero --> Just 0
+> :int $ fib one --> Just 1
+> :int $ fib two --> Just 1
+> :int $ fib three --> Just 2
+> :int $ fib four --> Just 3
+> :int $ fib five --> Just 5
+> :int $ fib six --> Just 8
+> :int $ fib seven --> Just 13
+> :int $ fib eight --> Just 21
+> :int $ fib nine --> Just 34
+> :int $ fib ten --> Just 55
+etc.
+-}
+fib = undef. -- TODO implement this function.
+
+{-
+`binary_to_nat` takes a list of ones and zeroes (the head of the list
+being de most significant bit) and return the church-encoded natural
+number corresponding to the binary encoding. [2 points]
+
+> :int $ binary_to_nat nil --> Just 0
+> :int $ binary_to_nat ($ cons zero nil) --> Just 0
+> :int $ binary_to_nat ($ cons one nil) --> Just 1
+> :int $ binary_to_nat ($ cons one ($ cons zero nil)) --> Just 2
+> :int $ binary_to_nat ($ cons zero ($ cons one ($ cons zero nil))) --> Just 2
+> :int $ binary_to_nat ($ cons one ($ cons zero ($ cons one nil))) --> Just 5
+-}
+binary_to_nat = undef. -- TODO implement this function.
+
+{-
+`divmod_by_2` takes a natural number as argument and return a pair
+where the first element is half of the argument (rounded down) and the
+second element is zero if the argument is even, and one if it is odd.
+
+[3 points]
+
+> :equal $ divmod_by_2 five, $ pair two one --> True
+> :equal $ divmod_by_2 two, $ pair one zero --> True
+> :equal $ divmod_by_2 zero, $ pair zero zero --> True
+-}
+divmod_by_2 = undef. -- TODO implement this function.
+
+{-
+`nat_to_binary` take a natural number as argument and return a list of
+zeros and ones corresponding to the binary encoding of the number,
+with the MSB at the head of the list.
+
+Note: Use `divmod_by_2` in a loop. Since the number of iterations of
+the loop is not known in advance (not possible to loop with a nat), it
+is helpful to use `fix` and indirectly make a recursive inner
+function.
+
+[4 points]
+
+> :equal $ binary_to_nat ($ nat_to_binary zero), zero --> True
+> :equal $ binary_to_nat ($ nat_to_binary one), one --> True
+> :equal $ binary_to_nat ($ nat_to_binary two), two --> True
+> :equal $ binary_to_nat ($ nat_to_binary three), three --> True
+> :equal $ binary_to_nat ($ nat_to_binary four), four --> True
+-}
+nat_to_binary = undef. -- TODO implement this function.

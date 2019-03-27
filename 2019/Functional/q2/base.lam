@@ -1,0 +1,79 @@
+module "base".
+
+{-
+
+This module contains definitions for booleans, integers, lists,
+following the church encoding.
+
+Please refer to https://en.wikipedia.org/wiki/Church_encoding for
+additional details.
+
+-}
+
+-- Some basic functions.
+id = \ x -> x.
+const = \x y -> x.
+compose = \ f g a -> $ f ($ g a).
+
+-- A basic function for all the stubs
+undef = id.
+
+-- A divergent term.
+omega = let w = \ x -> $ x x in $ w w.
+
+-- A boolean is reprensented as a function that chooses one of two
+-- options.
+true = \ t f -> t. -- Note: this is equal to const.
+false = \ t f -> f.
+
+-- 'if cond then else' is the same as applying the boolean condition:
+if = \ c t e -> $ c t e.
+
+-- Here are some boolean functions
+and = \ a b -> $ if a b false.
+or = \ a b -> $ if a true b.
+not = \ a -> $ if a false true.
+xor = \ a b -> $ if a ($ not b) b.
+
+-- A natural integer n is represented as a function that applies a
+-- given function n times to its second argument
+zero = \ f init -> init. -- The function is applied zero times, note
+                         -- that zero is equal to `false`
+succ = \ n -> \ f -> $ compose f ($ n f).
+
+-- Here are some small natural numbers
+one = $ succ zero.
+two = $ succ one.
+three = $ succ two.
+four = $ succ three.
+five = $ succ four.
+six = $ succ five.
+seven = $ succ six.
+eight = $ succ seven.
+nine = $ succ eight.
+ten = $ succ nine.
+
+add = \ x y -> $ x succ y.
+
+-- Counting down is more tricky, let's take pred from the wiki
+-- article.  Note that pred 0 = 0, pred n = n - 1
+pred = \ n f x -> $ n (\ g h -> $ h ($ g f)) (\ u -> x) (\ u -> u).
+
+-- A list is represented as a fold.
+-- For a list of type [a]:
+--  - The argument `fun` is a binary function a -> b -> b.
+--  - The argument `acc` is the accumulator of type b.
+nil = \ fun acc -> acc. -- Note that `nil` is equal to `false`
+cons = \ head tail -> \ fun acc -> $ tail fun ($ fun head acc).
+
+-- Example of a list:
+example_list = $ cons one ($ cons two ($ cons three nil)).
+
+-- Example of a fold:
+sum = \l -> $ l add zero.
+
+-- Direct recursion is not possible with our simple macros. We can
+-- implement recursion with the help of the Y combinator, often called
+-- `fix`. For instance, instead of `f = \a b -> $ add a ($ f b one)`,
+-- one could write : `f = $ fix (\f a b -> $ add a ($ f b one)`.
+fix = \f -> let y = \z -> $ f ($ z z) in $ y y.
